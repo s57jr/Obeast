@@ -1,6 +1,0 @@
-name: workouttest3
-duration: 12.54
-type: 
-maxHeartrate: 123
-minHeartrate: 2
-songs: 2, 3, 4, 

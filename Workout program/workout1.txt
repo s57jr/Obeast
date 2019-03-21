@@ -1,0 +1,7 @@
+name: workout1
+duration: 32
+type: style
+maxHeartrate: 190
+minHeartrate: 100
+warmup_duration: 7.60909e-317
+songs: 5, 2, 76, 34, 2, 

@@ -1,7 +1,0 @@
-name: TEST
-duration: 23.2
-type: style
-maxHeartrate: 190
-minHeartrate: 100
-warmup_duration: 2.51262e-316
-songs: 2, 3, 4, 

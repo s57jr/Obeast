@@ -37,12 +37,12 @@ while (answer_create_workout == "yes"){
 	cin >> answer;
 	myfile << "minHeartrate: " << answer <<"\n";
 	
-	double duration_warmup;
+	double duration_warmup=0;
 	bool timetyped = false;
 	while (timetyped = false){
 	cout << "How long does the warming up take, needs to be shorter then the total time\n";
 	cin >> duration_warmup;
-	if(duration_warmup<duration_total) {
+	if(duration_warmup<duration_total && duration_warmup != 0) {
 		timetyped = true;
 	}
 	}
