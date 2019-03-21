@@ -1,0 +1,6 @@
+name: workoutteststringtodouble
+duration: 312
+type: 
+maxHeartrate: 150
+minHeartrate: 10
+songs: 1, 2, 3, 4, 5, 

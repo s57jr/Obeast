@@ -1,0 +1,6 @@
+name: YEAH
+duration: 123.23
+type: style
+maxHeartrate: 1234
+minHeartrate: 12
+songs: , 2, 5, 2, 3, 1, 2, 
