@@ -4,4 +4,4 @@ type: cardio
 maxHeartrate: 170
 minHeartrate: 110
 warmup_duration: 2.23
-songs: 2,5,23,54,12,764, 
+songs: 1,2,3,4,5,6

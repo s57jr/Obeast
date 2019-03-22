@@ -7,6 +7,7 @@ using namespace std;
 
 class workout
 {
+//variables
  private:
 	string filename;
 	string name;
@@ -21,6 +22,8 @@ class workout
  public:
 	workout(string nameget);
 	workout();
+ 
+ //functions
  string getname();
  double getduration();
  int getsong(int position);

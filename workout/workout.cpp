@@ -17,7 +17,6 @@ workout::workout(string nameget)
 	filename = nameget;
 	ifstream file;
 	file.open(filename);
-	char output[100];
 	if (file.is_open()) {
 		getline(file, line);
 		line.erase (0,6);
