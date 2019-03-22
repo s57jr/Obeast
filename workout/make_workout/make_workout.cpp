@@ -76,7 +76,7 @@ while (answer_create_workout == "yes"){
 	while (song_answer != "no"){
 	cin >> song_answer;
 	if (song_answer != "no"){
-		myfile << song_answer << ", ";
+		myfile << song_answer << ",";
 		number_of_songs++;
 	}
 	}
