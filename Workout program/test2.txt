@@ -1,7 +1,0 @@
-name: test2
-duration: 5
-type: type
-maxHeartrate: 190
-minHeartrate: 100
-warmup_duration: 0
-songs: 2, 3, 4, 

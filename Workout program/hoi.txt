@@ -1,7 +1,0 @@
-name: hoi
-duration: 5
-type: cardio
-maxHeartrate: 190
-minHeartrate: 100
-warmup_duration: 0
-songs: 2, 3, 4, 5, 6, 

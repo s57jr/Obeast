@@ -29,17 +29,35 @@ while (answer_create_workout == "yes"){
 	cout << "What is the type of the workout?\n"; cin >> answer;
 	myfile << "type: " << answer <<"\n";	
 	
+	int maxHeartrate;
 	cout << "What is the max heartrate you can reach?\n"; 
-	cin >> answer;
-	myfile << "maxHeartrate: " << answer <<"\n";
+	cin >> maxHeartrate;
+	myfile << "maxHeartrate: " << maxHeartrate <<"\n";
 	
-	cout << "What is the min heartrate you can reach?\n";
-	cin >> answer;
-	myfile << "minHeartrate: " << answer <<"\n";
+	
+	
+	
+	
+
+	
+	int minHeartrate=0;
+	bool heartratetyped = false;
+	while (heartratetyped == false){
+	cout << "What is the min heartrate you can reach? This should be less than the maxHeartrate\n";	
+	cin >> minHeartrate;
+	if(minHeartrate<maxHeartrate && minHeartrate != 0) {
+		heartratetyped = true;
+	}
+	}
+	myfile << "minHeartrate: " << minHeartrate <<"\n";
+	
+	
+	
+	
 	
 	double duration_warmup=0;
 	bool timetyped = false;
-	while (timetyped = false){
+	while (timetyped == false){
 	cout << "How long does the warming up take, needs to be shorter then the total time\n";
 	cin >> duration_warmup;
 	if(duration_warmup<duration_total && duration_warmup != 0) {
@@ -47,7 +65,7 @@ while (answer_create_workout == "yes"){
 	}
 	}
 	myfile << "warmup_duration: " << duration_warmup <<"\n";
-	
+
 	
 	
 	int number_of_songs=0;
