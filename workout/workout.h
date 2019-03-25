@@ -2,6 +2,7 @@
 #define WORKOUT_H
 #include <string>
 #include <vector>
+#include "song.h"
 using namespace std;
 
 
@@ -17,16 +18,20 @@ class workout
 	int minHeartrate;
 	double warmup_duration;
 	vector<int> songs;
+	 vector<song> tracklist;
+	
 	
 	
  public:
 	workout(string nameget);
 	workout();
- 
+
+	
+	
  //functions
  string getname();
  double getduration();
- int getsong(int position);
+ song getsong(int position);
  
 };
 

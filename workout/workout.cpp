@@ -1,6 +1,7 @@
 #include "workout.h"
 #include <fstream>
 #include <stdlib.h>
+#include "song.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -50,6 +51,8 @@ workout::workout(string nameget)
 			{
 				if(line.at(i)==',' || line.at(i)=='\0'){
 					songs.push_back(stoi(line.substr(j,i-j))); //pushing the sub string
+					song songinvector("songs.txt",stoi(line.substr(j,i-j)));
+					tracklist.push_back(songinvector);
 					j=i+1;
 				}
 			}
@@ -66,8 +69,7 @@ double workout::getduration()
 	return duration;
 }
 
-int workout::getsong(int position)
+song workout::getsong(int position)
 {
-	return songs[position];
+	return tracklist[position];
 }
-
