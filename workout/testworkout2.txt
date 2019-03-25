@@ -1,7 +1,0 @@
-name: testworkout2
-duration: 12
-type: halal
-maxHeartrate: 129
-minHeartrate: 120
-warmup_duration: 1
-songs: 6,2,4,

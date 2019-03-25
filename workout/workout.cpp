@@ -14,8 +14,27 @@ workout::workout()
 
 workout::workout(string nameget)
 {
+	parse(nameget);
+}
+
+string workout::getname()
+{
+ return name;
+} 
+
+double workout::getduration()
+{
+	return duration;
+}
+
+song workout::getsong(int position)
+{
+	return tracklist[position];
+}
+
+void workout::parse(string filename)
+{
 	string line;
-	filename = nameget;
 	ifstream file;
 	file.open(filename);
 	if (file.is_open()) {
@@ -55,20 +74,17 @@ workout::workout(string nameget)
 					j=i+1;
 				}
 			}
+			
+		getline(file, line);
+		line.erase (0,10);
+		cout << line << endl << endl;
+		cout << "line size is: " << line.size() <<endl;
+			for(int i = 0,j=0; i<line.size(); i++)
+			{
+				if(line.at(i)==',' || line.at(i)=='\0'){
+					exercise.pushback(stoi(line.substr(j,i-j)));
+					j=i+1;
+				}
+			}
 	}
-}
-
-string workout::getname()
-{
- return name;
-} 
-
-double workout::getduration()
-{
-	return duration;
-}
-
-song workout::getsong(int position)
-{
-	return tracklist[position];
 }

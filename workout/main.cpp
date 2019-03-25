@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
  cout << "startup with workout1.txt as name\n";
- workout blaworkout("workouttest3.txt");
+ workout blaworkout("testworkout.txt");
  cout << "the duration of the created workout is: " << blaworkout.getduration() << endl;
  cout << "which position of song do you want to get from this workout?" << endl;
  int songchosen;

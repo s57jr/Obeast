@@ -86,6 +86,24 @@ while (answer_create_workout == "yes"){
 	}
 	}
 	cout << "\nyou have added " << number_of_songs << " songs.\n";
+	myfile << endl;
+	
+	int number_of_ex = 0;
+	string ex_answer;
+	cout << "Type the number of the exersize and press enter, type no for no more exersizes...\n";
+	myfile << "exersize: ";
+	while (ex_answer != "no"){
+	cin >> ex_answer;
+	if (ex_answer != "no"){
+		myfile << ex_answer << ",";
+		number_of_ex++;
+	}
+	else {
+		cout << "song number is incorrect, or you have decided to add no more songs.\n\n";
+	}
+	}
+	cout << "\nyou have added " << number_of_ex << " exersizes.\n";
+	
 		
 	cout << "Would you like to create a new program? \n";
 	cin >> answer_create_workout;

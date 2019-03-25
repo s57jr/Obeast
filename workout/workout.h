@@ -18,7 +18,10 @@ class workout
 	int minHeartrate;
 	double warmup_duration;
     vector<song> tracklist;
+	vector<int> exerciselist;
 	
+//functions
+	void parse (string filename);
 	
 	
  public:
@@ -31,6 +34,8 @@ class workout
  string getname();
  double getduration();
  song getsong(int position);
+ 
+ 
  
 };
 

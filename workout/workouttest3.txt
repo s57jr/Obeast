@@ -1,7 +1,0 @@
-name: workouttest3
-duration: 10.5
-type: cardio
-maxHeartrate: 150
-minHeartrate: 120
-warmup_duration: 2
-songs: 14,8,7,1,
