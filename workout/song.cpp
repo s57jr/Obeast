@@ -47,3 +47,13 @@ string song::getname()
 {
 	return songname;
 }
+
+int song::getbpm()
+{
+	return bpm;
+}
+
+string song::getduration()
+{
+	return duration;
+}

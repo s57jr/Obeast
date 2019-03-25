@@ -34,12 +34,6 @@ while (answer_create_workout == "yes"){
 	cin >> maxHeartrate;
 	myfile << "maxHeartrate: " << maxHeartrate <<"\n";
 	
-	
-	
-	
-	
-
-	
 	int minHeartrate=0;
 	bool heartratetyped = false;
 	while (heartratetyped == false){
@@ -50,10 +44,6 @@ while (answer_create_workout == "yes"){
 	}
 	}
 	myfile << "minHeartrate: " << minHeartrate <<"\n";
-	
-	
-	
-	
 	
 	double duration_warmup=0;
 	bool timetyped = false;
@@ -82,8 +72,6 @@ while (answer_create_workout == "yes"){
 	}
 	cout << "\n\n";
 
-	
-	
 	
 	cout << "Type the number of the song and press enter, type no for no more songs...\n";
 	myfile << "songs: ";

@@ -15,12 +15,16 @@ class song
 	vector<string> songvector;
 	
  public:
+ 
+ 
+// constructors
 	song(string nameget, int numberofsong);
 	song();
  
- //functions
+//functions
  string getname();
- 
+ int getbpm();
+ string getduration();
  
 };
 

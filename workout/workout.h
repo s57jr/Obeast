@@ -17,17 +17,16 @@ class workout
 	int maxHeartrate;
 	int minHeartrate;
 	double warmup_duration;
-	vector<int> songs;
-	 vector<song> tracklist;
+    vector<song> tracklist;
 	
 	
 	
  public:
+ 
+ //constructors
 	workout(string nameget);
 	workout();
 
-	
-	
  //functions
  string getname();
  double getduration();

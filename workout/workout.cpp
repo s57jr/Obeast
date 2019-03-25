@@ -50,7 +50,6 @@ workout::workout(string nameget)
 			for(int i = 0,j=0; i<line.size(); i++)
 			{
 				if(line.at(i)==',' || line.at(i)=='\0'){
-					songs.push_back(stoi(line.substr(j,i-j))); //pushing the sub string
 					song songinvector("songs.txt",stoi(line.substr(j,i-j)));
 					tracklist.push_back(songinvector);
 					j=i+1;
