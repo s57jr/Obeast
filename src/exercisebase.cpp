@@ -1,6 +1,8 @@
 #include "exercisebase.h"
+#include <string>
 
-exerciseBase::exerciseBase()
+exerciseBase::exerciseBase(int a)
 {
-    std::cout << "Hello exerciseBase! " << std::endl;
+	std::cout << "Hello exerciseBase! with variable :    " << a <<  std::endl;
+	
 }

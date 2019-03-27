@@ -1,6 +1,7 @@
 #include "basicwarmup.h"
+#include <string>
 
-basicWarmUp::basicWarmUp()
+basicWarmUp::basicWarmUp(int a, std::string b):exerciseBase(a)
 {
-    std::cout << "Hello basicWarmUp! " << std::endl;
+    std::cout << "Hello basicWarmUp! with variable :  " << b <<  std::endl;
 }
