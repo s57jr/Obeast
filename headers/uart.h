@@ -2,14 +2,15 @@
 #define UART_H
 #include <stdint.h>
 #include <iostream>
+#include <vector>
 
 class UART
 {
 public:
     UART();
 		
-protected:
-	vector<uint16_t> getSensorData();
+ 
+    std::vector<uint16_t> getSensorData();
 	
 };
 

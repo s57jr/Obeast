@@ -11,13 +11,15 @@ UART::UART()
     std::cout << "Hello UART!" << std::endl;
 }
 
-UART::getSensorData();
+std::vector<uint16_t> UART::getSensorData(string device)
 {
   int fd ;
-
-  if((fd=serialOpen("/dev/ttyS0",9600))<0){
-    fprintf(stderr,"Unable to open serial device: %s\n",strerror(errno));
-    return 1;
+  std::vector<uint16_t> returnerror;
+  returnerror.push_back(99);
+  
+  if((fd=serialOpen(device,9600))<0){
+    //fprintf(stderr,"Unable to open serial device: %s\n",strerror(errno));
+    return returnerror; 
   }
 int i=1;
 int k=0;
@@ -29,7 +31,11 @@ char serialdata;
 
 
   for (;;){
-	serialdata=serialGetchar(fd);
+ 	serialdata=serialGetchar(fd);
+    if (serialdata==99){
+    return returnerror;}
+ 
+ 
 	switch(i) {
  	case 1 : 
 		//s received from serialdata

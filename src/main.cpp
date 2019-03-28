@@ -2,8 +2,9 @@
 #include "basicwarmup.h"
 #include "exPushup.h"
 #include <string>
-#include "UART.h"
+#include "uart.h"
 #include <stdint.h>
+#include <vector>
 
 /*
  compile using:
@@ -21,8 +22,13 @@ int main(void)
 	//basicWarmUp warmupExercise2(a,b);
 	//exPushup extrastrong();
 	UART letsgo;
-	vector<uint16_t> singlesensordata
-	singlesensordata = letsgo.getsensordata();
+	std::vector<uint16_t> singlesensordata;
+	singlesensordata = letsgo.getSensorData();
+  if (singlesensordata[0] == 99){
+  std::cout << "error in receiving data, or nothing is received" << std::endl;
+  return 0;
+  }
+  
 	std::cout << "sensordata 0 = " << singlesensordata[0] << std::endl;
 	std::cout << "sensordata 1 = " << singlesensordata[1] << std::endl;
 
