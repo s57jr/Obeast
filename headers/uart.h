@@ -8,9 +8,7 @@ class UART
 {
 public:
     UART();
-		
- 
-    std::vector<uint16_t> getSensorData();
+
 	
 };
 
