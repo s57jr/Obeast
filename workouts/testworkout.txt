@@ -1,0 +1,8 @@
+name: testworkout
+duration: 15
+type: cardio
+maxHeartrate: 170
+minHeartrate: 120
+warmup_duration: 3
+songs: 3,7,4,16,
+exersize: pushup,crunch,alternate,sitrep,

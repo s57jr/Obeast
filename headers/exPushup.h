@@ -7,8 +7,11 @@
 class exPushup : public exerciseBase
 {
 public:
-	exPushup(int a,std::string b);
-	
+	exPushup();
+  ~exPushup();
+  
+private:
+	std::vector<string> songs;
 	
 
 

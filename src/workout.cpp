@@ -3,14 +3,12 @@
 
 using namespace std;
 
-workout::workout()
-	{
-		name = "noname";
-	}
-
 workout::workout(string nameget)
 {
 	parse(nameget);
+  playerthing = new player;
+ 
+ 
 }
 
 string workout::getname()
@@ -78,9 +76,48 @@ void workout::parse(string filename)
 			for(int i = 0,j=0; i<line.size(); i++)
 			{
 				if(line.at(i)==',' || line.at(i)=='\0'){
-					exerciselist.push_back(stoi(line.substr(j,i-j)));
+					exerciselist.push_back(line.substr(j,i-j));
 					j=i+1;
 				}
 			}
 	}
+}
+
+
+int runworkout()
+{
+auto time_start = std::chrono::steady_clock::now();
+bool exersisesfinished = false;
+int exersisescounter = 0;
+  while(exersisesfinished = false)
+  {
+     auto time_end = std::chrono::steady_clock::now();
+     timerunning = std::chrono::duration_cast<chrono::seconds>(time_end-time_start).count();
+     if (timerunning > (60*duration))
+     { exersisesfinished = true; }
+     
+     //write code for determining which song is played
+     
+     runexercise(exersiselist[exersisecounter]);
+     
+     if (exersisecounter < exersiselist.size() )
+     {
+     exersisecounter++;
+     }
+     else if (exersisecounter >= exersiselist.size() )
+     {
+     exersisecounter = 0;
+     }
+  }
+  std::cout << "all exersizes completed" << std::endl;
+
+  return 1;
+}
+
+int runexercise(string exersisename)
+{
+expushup tmpex("music/sultans.mp3");
+
+tmpex.playex();
+delete tmpex;
 }

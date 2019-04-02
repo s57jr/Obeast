@@ -6,6 +6,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <iostream>
+#include <chrono>
 
 
 using namespace std;
@@ -23,7 +24,7 @@ class workout
 	int minHeartrate;
 	double warmup_duration;
   //  vector<song> tracklist;
-	vector<int> exerciselist;
+	vector<string> exerciselist;
 	
 //functions
 	void parse (string filename);
@@ -34,7 +35,9 @@ class workout
  //constructors
 	workout(string nameget);
 	workout();
-
+  
+ int runworkout();
+ int runexercise(string exersisename);
  //functions
  string getname();
  double getduration();

@@ -3,15 +3,20 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <chrono>
+#include "player.h"
 
 class exerciseBase
 {
 public:
     
-	exerciseBase(int a);
-
+	exerciseBase();
+  virtual void playex(string songname);
 	
 protected:
+
+  player *musicplayer;
+  
 	
 	
 	

@@ -1,7 +1,14 @@
 #include "exPushup.h"
 #include <string>
 
-exPushup::exPushup(int a, std::string b):exerciseBase(a)
+exPushup::exPushup(string songname)
 {
-    std::cout << "Hello basicWarmUp! with variable :  " << b <<  std::endl;
+
+    songs.push_back(songname);
+    std::cout << "Hello basicWarmUp!" << std::endl;
+}
+
+exPushup::~exPushup()
+{
+  
 }
