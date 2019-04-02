@@ -29,3 +29,36 @@ void player::play(){
 void player::stop(){
 	libvlc_media_player_stop(mp);
 }
+
+int player::getMediaTime(){
+	return libvlc_media_player_get_time(mp);
+}
+
+float  player::getPos(){
+	return libvlc_media_player_get_position(mp);
+}
+
+
+
+int player::getTime(){
+    currentTime = player::getMediaTime();
+    
+    std::cout << "Normal" << currentTime << std::endl;
+    
+    if (lastPlayTime == currentTime && lastPlayTime != 0){
+        currentTime += player::currentTimeMillis() - lastPlayTimeGlobal;
+    } else {
+        lastPlayTime = currentTime;
+        lastPlayTimeGlobal = player::currentTimeMillis();
+    }
+    
+
+    return currentTime;    //to float
+}
+
+long player::currentTimeMillis()
+{
+  
+	clock_gettime(CLOCK_REALTIME, &gettime_now);
+	return gettime_now.tv_nsec/1000000;
+}

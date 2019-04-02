@@ -6,23 +6,32 @@
 #include <string>
 #include <fstream>
 #include <vlc/vlc.h>
+#include <time.h>
 
 class player
 {
 public:
-    player(std::string filename);
+player(std::string filename);
 	~player();
 
 	void play();
 	void stop();
+  int  getTime();
+  float getPos();
 
 private:
-	
+  
+	int  getMediaTime();
+  long int  currentTimeMillis();
+  
+  struct timespec gettime_now;
 	const char *file;
-
-    libvlc_instance_t *inst;
-    libvlc_media_player_t *mp;
-    libvlc_media_t *m;
+  long currentTime;
+  long lastPlayTime = 0;
+  long lastPlayTimeGlobal = 0;
+  libvlc_instance_t *inst;
+  libvlc_media_player_t *mp;
+  libvlc_media_t *m;
 
 };
 
