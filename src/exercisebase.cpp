@@ -8,11 +8,11 @@ exerciseBase::exerciseBase()
 	
 }
 
-virtual void exerciseBase::playex()
+void exerciseBase::playex()
 {
   
   musicplayer = new player(songname[0]);
-  musicplayer.play();
+  musicplayer->play();
   sleep(10);
   
 }

@@ -6,7 +6,6 @@ using namespace std;
 workout::workout(string nameget)
 {
 	parse(nameget);
-  playerthing = new player;
  
  
 }
@@ -84,29 +83,36 @@ void workout::parse(string filename)
 }
 
 
-int runworkout()
+int workout::runworkout()
 {
+
 auto time_start = std::chrono::steady_clock::now();
 bool exersisesfinished = false;
-int exersisescounter = 0;
-  while(exersisesfinished = false)
+int exercisescounter = 0;
+  while(exersisesfinished == false)
   {
      auto time_end = std::chrono::steady_clock::now();
-     timerunning = std::chrono::duration_cast<chrono::seconds>(time_end-time_start).count();
+     int timerunning = std::chrono::duration_cast<chrono::seconds>(time_end-time_start).count();
+     
+     std::cout << "Timerning: " << timerunning << std::endl;
+     std::cout << "Duration: " << duration << std::endl;
+     
      if (timerunning > (60*duration))
      { exersisesfinished = true; }
      
      //write code for determining which song is played
      
-     runexercise(exersiselist[exersisecounter]);
+     runexercise(exerciselist[exercisescounter]);
+     std::cout << "Exercise list size: " << exerciselist.size() << std::endl;
      
-     if (exersisecounter < exersiselist.size() )
+     if (exercisescounter < exerciselist.size()-1 )
      {
-     exersisecounter++;
+     exercisescounter++;
      }
-     else if (exersisecounter >= exersiselist.size() )
+     else
      {
-     exersisecounter = 0;
+     exercisescounter = 0;
+     
      }
   }
   std::cout << "all exersizes completed" << std::endl;
@@ -114,10 +120,13 @@ int exersisescounter = 0;
   return 1;
 }
 
-int runexercise(string exersisename)
+int workout::runexercise(string exersisename)
 {
-expushup tmpex("music/sultans.mp3");
 
-tmpex.playex();
-delete tmpex;
+tmpex = new exPushup("music/BM.mp3");
+
+tmpex->playex();
+
+delete tmpex;  
+ return 0;
 }

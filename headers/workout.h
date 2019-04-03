@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <chrono>
+#include "exPushup.h"
 
 
 using namespace std;
@@ -29,6 +30,7 @@ class workout
 //functions
 	void parse (string filename);
 	
+ exPushup *tmpex;
 	
  public:
  

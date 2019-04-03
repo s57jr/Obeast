@@ -7,7 +7,7 @@
 class basicWarmUp : public exerciseBase
 {
 public:
-	basicWarmUp(int a,std::string b);
+	basicWarmUp();
 	
 	
 

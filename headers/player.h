@@ -7,6 +7,7 @@
 #include <fstream>
 #include <vlc/vlc.h>
 #include <time.h>
+#include <thread>
 
 class player
 {
@@ -18,12 +19,15 @@ player(std::string filename);
 	void stop();
   int  getTime();
   float getPos();
+  int isPlaying();
 
 private:
   
 	int  getMediaTime();
   long int  currentTimeMillis();
   
+  std::thread st;
+  std::thread rt;
   struct timespec gettime_now;
 	const char *file;
   long currentTime;

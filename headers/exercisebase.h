@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <chrono>
+#include <unistd.h>
 #include "player.h"
 
 class exerciseBase
@@ -11,12 +12,12 @@ class exerciseBase
 public:
     
 	exerciseBase();
-  virtual void playex(string songname);
+  virtual void playex();
 	
 protected:
 
   player *musicplayer;
-  
+  std::vector<std::string> songname;
 	
 	
 	

@@ -14,15 +14,22 @@ public:
     UART();
     ~UART();
 		
+int getSensorData(int &uart0_filestream);
+int init(int &uart0_filestream);
 
-	std::vector<uint16_t> getSensorData(int uart0_filestream);
-	
+
+protected:
+  std::vector<uint16_t> singlesensordata;
+  
 private:
-int state; 
-//int uart0_filestream;
-std::vector<uint16_t> errorvector;
-bool sreceived;
- 
+  int uart0_filestream;
+  std::vector<uint16_t> errorvector;
+  bool sreceived;
+  struct termios options;
+
+
+
+
 };
 
 #endif // UART_H

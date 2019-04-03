@@ -19,15 +19,18 @@ player::player(std::string filename)
 player::~player(){
 	libvlc_media_release(m);
 	libvlc_release(inst);
-	libvlc_media_player_release(mp);
+	//libvlc_media_player_release(mp);
+  std::cout << "Goodbye player! " << std::endl;
 }
+
 
 void player::play(){
 	libvlc_media_player_play(mp);
 }
 
 void player::stop(){
-	libvlc_media_player_stop(mp);
+  libvlc_media_player_stop(mp);
+
 }
 
 int player::getMediaTime(){
@@ -38,7 +41,14 @@ float  player::getPos(){
 	return libvlc_media_player_get_position(mp);
 }
 
+int player::isPlaying(){
+  if(	libvlc_media_player_is_playing(mp)){
+    return true;
+  }else{
+    return false;
+  }
 
+}
 
 int player::getTime(){
     currentTime = player::getMediaTime();
