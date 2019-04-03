@@ -13,13 +13,15 @@ player::player(std::string filename)
     mp = libvlc_media_player_new_from_media(m);
 	
     // no need to keep the media now
-  //  libvlc_media_release(m);
+    //libvlc_media_release(m);
+    
 }
 
 player::~player(){
 	libvlc_media_release(m);
 	libvlc_release(inst);
-	//libvlc_media_player_release(mp);
+	libvlc_media_player_release(mp);
+  sleep(2);
   std::cout << "Goodbye player! " << std::endl;
 }
 
@@ -48,6 +50,11 @@ int player::isPlaying(){
     return false;
   }
 
+}
+
+
+void player::setVolume(int vol){
+  libvlc_audio_set_volume(mp, vol);
 }
 
 int player::getTime(){

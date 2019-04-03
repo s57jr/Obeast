@@ -126,7 +126,7 @@ int exercisescounter = 0;
 int workout::runexercise(string exersisename)
 {
 
-tmpex = new exPushup("music/BM.mp3");
+tmpex = new exPushup("music/sultans.mp3");
 
 tmpex->playex();
 

@@ -1,6 +1,6 @@
-time: 14:00
+time: 16:35
 name: testworkout
-duration: 1
+duration: 7
 type: cardio
 maxHeartrate: 170
 minHeartrate: 120

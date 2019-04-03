@@ -4,6 +4,7 @@
 #include <vector>
 #include <unistd.h>
 #include <thread>
+#include <fstream>
 
 #include "basicwarmup.h"
 #include "exPushup.h"
@@ -48,22 +49,23 @@ product parseworkouts(std::string filename)
     
     std::string line,line2;
 	  ifstream file;
-    std::string filelocation = "workout/" + filename + ".txt";
-	  file.open(filename);
+    
+    std::string filelocation = "workouts/" + filename + ".txt";
+	  file.open(filelocation);
 	  if (file.is_open()) {
- 	  getline(file, timestamp);
+ 	  getline(file, line);
     line2 = line;
     file.close();
     }
     
-    line.erase(0,6); 	
-    line.erase(3,5);
+    line.erase(8,3); 
+    line.erase(0,6);
     line2.erase(0,9);
-    product testworkout;
+    product workoutparse;
     workoutparse.hour = stoi(line);
     workoutparse.minute = stoi(line2);
     workoutparse.name = filelocation;
-    return workoutparse
+    return workoutparse;
 }
 
 
@@ -71,22 +73,18 @@ product parseworkouts(std::string filename)
 int main(void)
 {
     std::vector<product> workouttimes;
-    
-    workouttime = parseworkouts(testworkout);
-    workouttimes.push_back(testworkout);
-
-  	int i = 1;
-    
-    std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
-    time_t tt = std::chrono::system_clock::to_time_t(now);
-    tm local_tm = *localtime(&tt);
-    int hour_now = local_tm.tm_hour;
-    int minute_now = local_tm.tm_min;
+    product workouttime;
+    workouttime = parseworkouts("testworkout");
+    workouttimes.push_back(workouttime);
+  	int i = 2;
+    int hour_now;
+    int minute_now;
     std::string workouttorun;
     // if statements for certain time stamps
     
     
-    
+    cout << "hourW: " << workouttime.hour << endl;
+    cout << "minW: " << workouttime.minute << endl;
 
     
     
@@ -99,25 +97,30 @@ while (i!=5){
 enum states { standby=1, idle=2, workout_s=3, playback_s=4, stop=5};
 states statemachine = standby;
   	
+std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+time_t tt = std::chrono::system_clock::to_time_t(now);
+tm local_tm = *localtime(&tt);
+hour_now = local_tm.tm_hour;
+minute_now = local_tm.tm_min;
    
    
-   
-  	cout << "start switch" << endl;
+  //	cout << "start switch" << endl;
   	switch(i)
   	{
       case standby:
-  		std::cout << "STANDBY..." << endl;
+  	//	std::cout << "STANDBY..." << endl;
   		//cout  << "which state do you want to go to?" << endl;
   		//cin >> i;
   		break;
   		
       case idle: 
       
+
       
-      for ( int i = 0;i<workouttimes.length();i++){
-      if (workouttimes[i].minute == minute_now && workouttimes[i].hour == hour_now)
+      for ( int a = 0;a<workouttimes.size();a++){
+      if (workouttimes[a].minute == minute_now && workouttimes[a].hour == hour_now)
       { i = 3;
-      workouttorun = workouttimes[i].name;
+      workouttorun = workouttimes[a].name;
       }
       }
       

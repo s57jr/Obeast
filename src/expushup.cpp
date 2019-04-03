@@ -18,10 +18,12 @@ void exPushup::playex( )
 {
   
   musicplayer = new player(songs[0]);
+  musicplayer->setVolume(20);
   musicplayer->play();
-  sleep(5);
+  sleep(6);
   if(musicplayer->isPlaying() == 1){
-     //musicplayer->stop();
+     musicplayer->stop();
+     sleep(1);
   }
   delete musicplayer;
   

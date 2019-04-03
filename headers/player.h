@@ -8,6 +8,7 @@
 #include <vlc/vlc.h>
 #include <time.h>
 #include <thread>
+#include <unistd.h>
 
 class player
 {
@@ -20,6 +21,7 @@ player(std::string filename);
   int  getTime();
   float getPos();
   int isPlaying();
+  void setVolume(int vol);
 
 private:
   
