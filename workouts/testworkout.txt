@@ -1,3 +1,4 @@
+time: 14:00
 name: testworkout
 duration: 1
 type: cardio

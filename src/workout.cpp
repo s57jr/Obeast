@@ -31,7 +31,10 @@ void workout::parse(string filename)
 	ifstream file;
 	file.open(filename);
 	if (file.is_open()) {
-		getline(file, line);
+ 
+	  getline(file, line);	
+   
+    getline(file, line);
 		line.erase (0,6);
 		name = line;
 		
