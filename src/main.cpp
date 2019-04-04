@@ -6,16 +6,17 @@
 #include <thread>
 #include <fstream>
 
-#include "basicwarmup.h"
 #include "exPushup.h"
 #include "uart.h"
 #include "player.h"
 #include "workout.h"
 #include "pressure.h"
-#include "uart.h"
+
 
 
 #include "time.h"
+
+#define THRSHLD 20000
 
 using namespace std;
 /*
@@ -44,9 +45,7 @@ struct product {
     } ;
 
 product parseworkouts(std::string filename)
-{
-    
-    
+{  
     std::string line,line2;
 	  ifstream file;
     
@@ -69,6 +68,19 @@ product parseworkouts(std::string filename)
 }
 
 
+int readSensorData(uint16_t *data){  //returns average value
+    int avg=0;
+    mtx.lock();
+    for (int i = 0; i < 40; i++) {
+      std::cout << "position " << i << " gives value: " << DataArray[i] << std::endl;
+      data[i] = DataArray[i];
+      avg+=DataArray[i];
+    }
+    mtx.unlock();
+    
+    return avg/40;
+}
+
 
 int main(void)
 {
@@ -80,17 +92,17 @@ int main(void)
     int hour_now;
     int minute_now;
     std::string workouttorun;
-    // if statements for certain time stamps
+    uint16_t sensorData[45];
+    player *playit;
+    
+    int notified =0;
     
     
     cout << "hourW: " << workouttime.hour << endl;
     cout << "minW: " << workouttime.minute << endl;
-
     
-    
-    
-    
-    
+    std::thread t1(callthread);
+    t1.detach();  //destroy if nothing happens
    
 while (i!=5){
   	
@@ -114,44 +126,51 @@ minute_now = local_tm.tm_min;
   		break;
   		
       case idle: 
-      
-
+             
+       
       
       for ( int a = 0;a<workouttimes.size();a++){
-      if (workouttimes[a].minute == minute_now && workouttimes[a].hour == hour_now)
-      { i = 3;
-      workouttorun = workouttimes[a].name;
-      }
+        if (workouttimes[a].minute == minute_now && workouttimes[a].hour == hour_now)
+        { 
+          if(notified == 0){
+            playit = new player("sounds/StartWorkout.mp3");
+            playit->setVolume(20);
+            playit->play();
+            sleep(2);
+            while(playit->isPlaying()){
+              sleep(1);
+            }
+          
+            delete playit;
+            notified = 1;
+          }
+        
+          int c= readSensorData(sensorData);
+          std::cout << "Sensor data : " << c << std::endl;
+          if(c > THRSHLD){
+            i=3;
+            workouttorun = workouttimes[a].name;
+          }
+        }
       }
       
-      
-       sleep(1);        
-    
-     
-     
+      sleep(1);        
+
   		break;
       case workout_s: 
               
   			std::cout << "WORKOUT..." << endl;
         
   		  //std::cout  << "which workout do you want to play?" << std::endl;
-
-        
-        std::thread t1(callthread);
-        t1.detach();
         
         
         workout tmpworkout (workouttorun);
 
         tmpworkout.runworkout();
         
-        mtx.lock();
-        for (int i = 0; i < 40; i++) {
-          std::cout << "position " << i << " gives value: " << DataArray[i] << std::endl;
-        }
-        mtx.unlock();
+        readSensorData(sensorData);
         
-        t1.~thread();
+        
         
         std::cout << "exercises completed" << std::endl;
     
@@ -166,7 +185,7 @@ minute_now = local_tm.tm_min;
 //  		break;
   	}
   	}
-   
+    t1.~thread();
     std::cout << "Hello Obeast!" << std::endl;
    
     return 0;

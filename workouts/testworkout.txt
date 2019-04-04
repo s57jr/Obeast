@@ -1,9 +1,9 @@
-time: 16:35
+time: 12:24
 name: testworkout
-duration: 7
-type: cardio
-maxHeartrate: 170
-minHeartrate: 120
-warmup_duration: 3
-songs: 3,7,4,16,
-exersize: pushup,crunch,alternate,sitrep,
+duration: 2
+type: luly
+maxHeartrate: 300
+minHeartrate: 1
+warmup_duration: 1
+songs: 0,1,
+exersize: pushup,fgh,ef,sd,

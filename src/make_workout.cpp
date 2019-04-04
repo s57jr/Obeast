@@ -2,7 +2,25 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <sys/types.h>
+#include <dirent.h>
 using namespace std;
+
+void read_directory(const std::string& name, std::vector<std::string>& v)
+{
+    DIR* dirp = opendir(name.c_str());
+    struct dirent * dp;
+    while ((dp = readdir(dirp)) != NULL) {
+        v.push_back(dp->d_name);
+    }
+    closedir(dirp);
+} 
+
 
 int main () {
   string answer_create_workout = "yes";
@@ -17,6 +35,13 @@ while (answer_create_workout == "yes"){
 	cin >> name;
 	txtname = "workouts/" + name + ".txt";
 	ofstream myfile (txtname);
+ 
+ std::cout << "how late do you want the reminder to be sent? type in format: HH:MM" << std::endl;
+ std::string timetostart;
+ cin >> timetostart;
+ myfile << "time: " << timetostart <<"\n";
+ 
+ 
 	myfile << "name: " << name <<"\n";
 	cout << "wourkout created called:" << name << "\nnow we will get all data...\n\n";
 	
@@ -62,22 +87,27 @@ while (answer_create_workout == "yes"){
 	string song_answer;
 	cout << "what songs do you want to play during the workout?\n";
 	cout << "these songs can be chosen" << endl;
-	
-	string line;
-	std::ifstream songfile("workouts/songs.txt");
-	int totalnumberofsongs = 1;
-    while (std::getline(songfile, line)){
-        cout << totalnumberofsongs << ": " << line << '\n';
-		totalnumberofsongs++;
-	}
-	cout << "\n\n";
+
+
+  std::vector<std::string> v;
+    read_directory("music", v);
+     for (int i=0;i<v.size();i++){
+        if (v[i].rfind(".", 0) == 0) {
+          v.erase(v.begin()+i);
+        }
+     }
+       
+    for (unsigned i=0; i<v.size(); ++i)
+    std::cout << "[" << i << "]" << ": " << v[i] << std::endl;;   
+ 
+
 
 	
 	cout << "Type the number of the song and press enter, type no for no more songs...\n";
 	myfile << "songs: ";
 	while (song_answer != "no"){
 	cin >> song_answer;
-	if (song_answer != "no" && stoi(song_answer)<totalnumberofsongs){
+	if (song_answer != "no" && stoi(song_answer)<v.size()){
 		myfile << song_answer << ",";
 		number_of_songs++;
 	}

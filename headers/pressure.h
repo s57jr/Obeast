@@ -8,9 +8,10 @@
 #include <vector>
 #include <stdint.h>
 #include <iostream>
-#include "sensor.h"
 #include <time.h>
 #include <mutex>
+
+#include "uart.h"
 
 extern std::mutex mtx;
 extern uint16_t DataArray[45];
@@ -30,6 +31,7 @@ public:
     
     
 protected: 
+
 	void getData(int &uart0_filestream); 
 
 private: 

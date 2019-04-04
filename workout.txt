@@ -1,8 +1,0 @@
-name: testworkout
-duration: 10
-type: int
-maxHeartrate: 190
-minHeartrate: 120
-warmup_duration: 2
-songs: 3,15,3,1,
-exersize: 4,7,2,3,

@@ -1,10 +1,9 @@
 #include "exPushup.h"
-#include <string>
 
-exPushup::exPushup(std::string songname)
+
+exPushup::exPushup(std::string songname): exerciseBase(songname)
 {
 
-    songs.push_back(songname);
     std::cout << "Hello exPushup!" << std::endl;
 }
 
@@ -17,13 +16,12 @@ exPushup::~exPushup()
 void exPushup::playex( )
 {
   
-  musicplayer = new player(songs[0]);
+  musicplayer = new player(exerciseBase::song);
   musicplayer->setVolume(20);
   musicplayer->play();
   sleep(6);
   if(musicplayer->isPlaying() == 1){
      musicplayer->stop();
-     sleep(1);
   }
   delete musicplayer;
   
