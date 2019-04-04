@@ -8,6 +8,11 @@
 #include <iostream>
 #include <chrono>
 #include "exPushup.h"
+//stuff for reading directory
+#include <algorithm>
+#include <iterator>
+#include <sys/types.h>
+#include <dirent.h>
 
 
 using namespace std;
@@ -24,7 +29,7 @@ class workout
 	int maxHeartrate;
 	int minHeartrate;
 	double warmup_duration;
-  //  vector<song> tracklist;
+  std::vector<std::string> tracklist;
 	vector<string> exerciselist;
 	
 //functions
@@ -39,7 +44,7 @@ class workout
 	workout();
   
  int runworkout();
- int runexercise(string exersisename);
+ int runexercise(string exersisename, string songname);
  //functions
  string getname();
  double getduration();
