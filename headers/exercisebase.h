@@ -26,6 +26,7 @@ protected:
   int readSensorData(uint16_t *data);
   int samples;
   player *musicplayer;
+  player *feedbackplayer;
   DSP *proces;
   std::string song;
   int16_t *dataBufL;

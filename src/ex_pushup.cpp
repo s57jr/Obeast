@@ -1,24 +1,26 @@
-#include "exPushup.h"
+#include "ex_pushup.h"
 
 
-exPushup::exPushup(std::string songname): exerciseBase(songname)
+ex_pushup::ex_pushup(std::string songname): exerciseBase(songname)
 {
 
     std::cout << "Hello exPushup!" << std::endl;
 }
 
-exPushup::~exPushup()
+ex_pushup::~ex_pushup()
 {
   std::cout << "Goodbye exPushup!" << std::endl;
   
 }
 
-void exPushup::playex( )
+void ex_pushup::playex( )
 {
   
   musicplayer = new player(exerciseBase::song);
   musicplayer->setVolume(20);
   musicplayer->play();
+  sleep(6);
+  playSound("TryAgain");
   sleep(6);
   if(musicplayer->isPlaying() == 1){
      musicplayer->stop();

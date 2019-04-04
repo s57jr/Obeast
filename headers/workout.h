@@ -44,7 +44,7 @@ class workout
 	workout();
   
  int runworkout();
- int runexercise(string exersisename, string songname);
+ int runexercise(string exercisename, string songname);
  //functions
  string getname();
  double getduration();

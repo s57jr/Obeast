@@ -19,6 +19,18 @@ exerciseBase::~exerciseBase()
 
 }
 
+void exerciseBase::playSound(std::string feedbackname)
+{
+  std::string feedbacklocation = "music/" + feedbackname + ".mp3";
+  feedbackplayer = new player(feedbacklocation);
+  feedbackplayer->setVolume(20);
+  feedbackplayer->play();
+  sleep(2);
+  while(feedbackplayer->isPlaying()){
+  sleep(1);
+  }
+  delete feedbackplayer;
+}
 
 
 int exerciseBase::readSensorData(uint16_t *data){  //returns average value

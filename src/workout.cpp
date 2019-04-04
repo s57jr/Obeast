@@ -154,15 +154,27 @@ int exercisescounter, songcounter = 0;
   return 1;
 }
 
-int workout::runexercise(string exersisename, string songname)
+int workout::runexercise(string exercisename, string songname)
 {
 std::string songlocation = "music/" + songname;
-
 std::cout << songlocation << std::endl;
-tmpex = new exPushup(songlocation);
 
+
+if(exercisename == pushup)
+{ tmpex = new ex_pushup(songlocation);
 tmpex->playex();
-
 delete tmpex;  
- return 0;
+}
+else if(exercisename == crunch)
+{ tmpex = new ex_crunch(songlocation);
+tmpex->playex();
+delete tmpex;  
+}
+else if(exercisename == warmup)
+{ tmpex = new ex_warmup(songlocation);
+tmpex->playex();
+delete tmpex;  
+}
+
+return 0;
 }
