@@ -20,7 +20,7 @@ void ex_pushup::playex( )
   musicplayer->setVolume(20);
   musicplayer->play();
   sleep(6);
-  playSound("TryAgain");
+  playSound("Negative/WhyDoIEvenBother",40);
   sleep(6);
   if(musicplayer->isPlaying() == 1){
      musicplayer->stop();

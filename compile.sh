@@ -1,2 +1,2 @@
 #!/bin/sh
-g++ -Iheaders/ -o output -pthread src/main.cpp src/pressure.cpp src/exercisebase.cpp src/uart.cpp src/dsp.cpp src/player.cpp src/workout.cpp src/expushup.cpp -lvlc -lmpg123 -lm -Wall
+g++ -Iheaders/ -o output -pthread src/main.cpp src/pressure.cpp src/exercisebase.cpp src/uart.cpp src/dsp.cpp src/player.cpp src/workout.cpp src/ex_pushup.cpp  src/ex_crunch.cpp src/ex_warmup.cpp -lvlc -lmpg123 -lm -Wall

@@ -1,4 +1,4 @@
-time: 12:24
+time: 14:27
 name: testworkout
 duration: 2
 type: luly
@@ -6,4 +6,4 @@ maxHeartrate: 300
 minHeartrate: 1
 warmup_duration: 1
 songs: 0,1,
-exersize: pushup,fgh,ef,sd,
+exersize: warmup,pushup,crunch,

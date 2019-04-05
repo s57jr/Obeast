@@ -12,8 +12,9 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-#include "exPushup.h"
-
+#include "ex_pushup.h"
+#include "ex_crunch.h"
+#include "ex_warmup.h"
 
 using namespace std;
 
@@ -34,8 +35,10 @@ class workout
 	
 //functions
 	void parse (string filename);
-	
- exPushup *tmpex;
+	void read_directory(const std::string& name, std::vector<std::string>& v);
+ ex_pushup *tmpexPushup;
+ ex_crunch *tmpexCrunch;
+ ex_warmup *tmpexWarmup;
 	
  public:
  

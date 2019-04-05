@@ -4,7 +4,6 @@
 #include <iostream>
 #include <math.h>
 #include <string>
-#include <mpg123.h>
 #include <fstream>
 
 class DSP
@@ -13,10 +12,7 @@ public:
     DSP();
 
     double getBeat(int16_t *dataL, int16_t *dataR,int st, int end, int sr);
-    int decodeMp3(std::string filename,std::string outFilename);
     void PCMtoInt16(int16_t *dataBufL,int16_t *dataBufR, int samples, std::string filename );
-
-
 
 private:
     double getChunkEnergy(int16_t *dataL, int16_t *dataR, int st,int end);

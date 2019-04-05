@@ -15,11 +15,33 @@ ex_warmup::~ex_warmup()
 
 void ex_warmup::playex( )
 {
+  float position;
+  float positionbuf;
+  int pos;
+  int posbuf=0;
+  long currTime;
   musicplayer = new player(exerciseBase::song);
   musicplayer->setVolume(20);
   musicplayer->play();
-  sleep(6);
-  playSound("Nice");
+  sleep(1);
+  while(musicplayer->isPlaying() == 1){
+     currTime = musicplayer->getTimeUs();
+
+     pos = (int)((float)currTime*0.0441);
+
+     if(beatArray[pos] > 0 && posbuf != beatArray[pos]){
+        std::cout << "Beat! " << std::endl;
+     }
+     posbuf = beatArray[pos];
+
+  
+  }
+  
+  
+  
+  
+  //sleep(6);
+  playSound("WarmUp/LetsDoWarmup", 40);
   sleep(6);
   if(musicplayer->isPlaying() == 1){
      musicplayer->stop();

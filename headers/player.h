@@ -18,15 +18,15 @@ player(std::string filename);
 
 	void play();
 	void stop();
-  int  getTime();
+  long  getTimeUs();
   float getPos();
   int isPlaying();
   void setVolume(int vol);
 
 private:
   
-	int  getMediaTime();
-  long int  currentTimeMillis();
+	long  getMediaTime();
+  long int  currentTimeUs();
   
   std::thread st;
   std::thread rt;

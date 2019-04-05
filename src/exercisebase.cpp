@@ -1,29 +1,78 @@
 #include "exercisebase.h"
-#include <string>
 
 exerciseBase::exerciseBase(std::string songname)
 {
   song = songname;
- // proces = new DSP;
- // samples = proces -> decodeMp3(song, "decoded.raw");
- // dataBufL = (int16_t*)malloc(samples * sizeof(int16_t));
- // dataBufR = (int16_t*)malloc(samples * sizeof(int16_t));
- // proces -> PCMtoInt16(dataBufL,dataBufR,samples, "decoded.raw");
+//  process = new DSP();
+  
+  std::string beatFile = songname;
+  
+  findAndReplaceAll(beatFile, ".mp3", "Beat.raw");
+  findAndReplaceAll(beatFile, "music", "raw");
+  
+  beatSize = getFileSize(beatFile);
+    
+  std::cout << "file: " <<beatFile << std::endl;
+  
+  beatArray = (uint8_t*)malloc(beatSize * sizeof(uint8_t));
+
+  std::ifstream in;
+  in.open(beatFile, std::ios::in | std::ios::binary);
+  for (int j = 0;j < beatSize; j++)
+  {
+     in >> (beatArray[j]);
+     //std::cout << beatArray[j] << std::endl;
+  }
+  in.close();
+  
 	std::cout << "Hello exerciseBase! " <<  std::endl;
 }
 
 exerciseBase::~exerciseBase()
 {
 
- // delete proces;
-
+  //delete process;
+  free(beatArray);
+//  free(dataBufR);
 }
 
-void exerciseBase::playSound(std::string feedbackname)
+void exerciseBase::findAndReplaceAll(std::string & data, std::string toSearch, std::string replaceStr)
 {
-  std::string feedbacklocation = "music/" + feedbackname + ".mp3";
+	// Get the first occurrence
+	size_t pos = data.find(toSearch);
+ 
+	// Repeat till end is reached
+	while( pos != std::string::npos)
+	{
+		// Replace this occurrence of Sub String
+		data.replace(pos, toSearch.size(), replaceStr);
+		// Get the next occurrence from the current position
+		pos =data.find(toSearch, pos + replaceStr.size());
+	}
+}
+
+int exerciseBase::getFileSize(const std::string &fileName) //bytes
+{
+    std::ifstream file(fileName.c_str(), std::ifstream::in | std::ifstream::binary);
+
+    if(!file.is_open())
+    {
+        return -1;
+    }
+
+    file.seekg(0, std::ios::end);
+    int fileSize = file.tellg();
+    file.close();
+
+    return fileSize;
+}
+
+
+void exerciseBase::playSound(std::string feedbackname, int volume)
+{
+  std::string feedbacklocation = "sounds/" + feedbackname + ".mp3";
   feedbackplayer = new player(feedbacklocation);
-  feedbackplayer->setVolume(20);
+  feedbackplayer->setVolume(volume);
   feedbackplayer->play();
   sleep(2);
   while(feedbackplayer->isPlaying()){

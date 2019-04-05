@@ -20,7 +20,7 @@ void ex_crunch::playex( )
   musicplayer->play();
   sleep(6);
   
-  playSound("Amazing");
+  playSound("Crunches/IntroCrunches",40);
   sleep(6);
   
   
@@ -32,17 +32,5 @@ void ex_crunch::playex( )
      musicplayer->stop();
   }
   delete musicplayer;
-  
-   
-  
-
-
-
-  sleep(30);
-  play(P2);
-  
-  
-  
-
   
 }

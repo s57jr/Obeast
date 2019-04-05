@@ -35,8 +35,8 @@ void player::stop(){
 
 }
 
-int player::getMediaTime(){
-	return libvlc_media_player_get_time(mp);
+long player::getMediaTime(){
+	return libvlc_media_player_get_time(mp)*1000;
 }
 
 float  player::getPos(){
@@ -57,25 +57,23 @@ void player::setVolume(int vol){
   libvlc_audio_set_volume(mp, vol);
 }
 
-int player::getTime(){
+long player::getTimeUs(){
     currentTime = player::getMediaTime();
     
-    std::cout << "Normal" << currentTime << std::endl;
-    
     if (lastPlayTime == currentTime && lastPlayTime != 0){
-        currentTime += player::currentTimeMillis() - lastPlayTimeGlobal;
+        currentTime += player::currentTimeUs() - lastPlayTimeGlobal;
     } else {
         lastPlayTime = currentTime;
-        lastPlayTimeGlobal = player::currentTimeMillis();
+        lastPlayTimeGlobal = player::currentTimeUs();
     }
     
 
     return currentTime;    //to float
 }
 
-long player::currentTimeMillis()
+long player::currentTimeUs()
 {
   
 	clock_gettime(CLOCK_REALTIME, &gettime_now);
-	return gettime_now.tv_nsec/1000000;
+	return gettime_now.tv_nsec/1000.0;
 }

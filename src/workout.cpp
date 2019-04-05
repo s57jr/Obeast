@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void read_directory(const std::string& name, std::vector<std::string>& v)
+void workout::read_directory(const std::string& name, std::vector<std::string>& v)
 {
     DIR* dirp = opendir(name.c_str());
     struct dirent * dp;
@@ -160,20 +160,20 @@ std::string songlocation = "music/" + songname;
 std::cout << songlocation << std::endl;
 
 
-if(exercisename == pushup)
-{ tmpex = new ex_pushup(songlocation);
-tmpex->playex();
-delete tmpex;  
+if(exercisename == "pushup")
+{ tmpexPushup = new ex_pushup(songlocation);
+tmpexPushup->playex();
+delete tmpexPushup;  
 }
-else if(exercisename == crunch)
-{ tmpex = new ex_crunch(songlocation);
-tmpex->playex();
-delete tmpex;  
+else if(exercisename == "crunch")
+{ tmpexCrunch = new ex_crunch(songlocation);
+tmpexCrunch->playex();
+delete tmpexCrunch;  
 }
-else if(exercisename == warmup)
-{ tmpex = new ex_warmup(songlocation);
-tmpex->playex();
-delete tmpex;  
+else if(exercisename == "warmup")
+{ tmpexWarmup = new ex_warmup(songlocation);
+tmpexWarmup->playex();
+delete tmpexWarmup;  
 }
 
 return 0;

@@ -1,20 +1,4 @@
-#include <iostream>
-#include <string>
-#include <stdint.h>
-#include <vector>
-#include <unistd.h>
-#include <thread>
-#include <fstream>
-
-#include "exPushup.h"
-#include "uart.h"
-#include "player.h"
-#include "workout.h"
-#include "pressure.h"
-
-
-
-#include "time.h"
+#include "main.h"
 
 #define THRSHLD 20000
 
@@ -27,59 +11,6 @@ g++ -Iheaders/ -o output -pthread src/main.cpp src/heartrate.cpp src/pressure.cp
 
 */
 
-std::mutex mtx;
-uint16_t DataArray[45];
-
-int uart0_filestream;
-void callthread() {
-  std::cout << "uart0_filestream address " << & uart0_filestream << std::endl;
-  pressure letsgo;
-  letsgo.datathread(uart0_filestream);
-
-}
-
-struct product {
-    int hour;
-    int minute;
-    std::string name;
-    } ;
-
-product parseworkouts(std::string filename)
-{  
-    std::string line,line2;
-	  ifstream file;
-    
-    std::string filelocation = "workouts/" + filename + ".txt";
-	  file.open(filelocation);
-	  if (file.is_open()) {
- 	  getline(file, line);
-    line2 = line;
-    file.close();
-    }
-    
-    line.erase(8,3); 
-    line.erase(0,6);
-    line2.erase(0,9);
-    product workoutparse;
-    workoutparse.hour = stoi(line);
-    workoutparse.minute = stoi(line2);
-    workoutparse.name = filelocation;
-    return workoutparse;
-}
-
-
-int readSensorData(uint16_t *data){  //returns average value
-    int avg=0;
-    mtx.lock();
-    for (int i = 0; i < 40; i++) {
-      std::cout << "position " << i << " gives value: " << DataArray[i] << std::endl;
-      data[i] = DataArray[i];
-      avg+=DataArray[i];
-    }
-    mtx.unlock();
-    
-    return avg/40;
-}
 
 
 int main(void)
@@ -94,7 +25,7 @@ int main(void)
     std::string workouttorun;
     uint16_t sensorData[45];
     player *playit;
-    
+
     int notified =0;
     
     
@@ -133,7 +64,7 @@ minute_now = local_tm.tm_min;
         if (workouttimes[a].minute == minute_now && workouttimes[a].hour == hour_now)
         { 
           if(notified == 0){
-            playit = new player("sounds/StartWorkout.mp3");
+            playit = new player("sounds/Random/StartWorkout.mp3");
             playit->setVolume(20);
             playit->play();
             sleep(2);
