@@ -13,6 +13,7 @@ public:
   ~ex_pushup();
   
   void playex();
+  void exercise(player *music);
   
 };
 

@@ -14,6 +14,9 @@ public:
   
   void playex();
   
+private: 
+  void exercise(player *music);
+  
 };
 
 #endif // EXWARMUP_H
